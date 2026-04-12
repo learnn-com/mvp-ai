@@ -1,0 +1,19 @@
+{
+  "name": "mvp-ai",
+  "private": true,
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "dev:web": "pnpm --filter web dev",
+    "build:web": "pnpm --filter web build",
+    "quality-gate": "turbo run lint ts:check test && pnpm prettier:fix && prettier --check \"**/*.{ts,tsx,js,cjs,mjs,json,css,md}\" --ignore-path .prettierignore",
+    "prettier:fix": "prettier --write \"**/*.{ts,tsx,js,cjs,mjs,json,css,md}\" --ignore-path .prettierignore",
+    "lint": "turbo run lint",
+    "ts:check": "turbo run ts:check",
+    "test": "turbo run test"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3",
+    "turbo": "^2.5.4",
+    "typescript": "^5.8.3"
+  }
+}

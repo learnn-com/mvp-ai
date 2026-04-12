@@ -1,0 +1,9 @@
+node_modules
+dist
+.turbo
+pnpm-lock.yaml
+.pair
+.claude
+.github
+AGENTS.md
+CLAUDE.md
