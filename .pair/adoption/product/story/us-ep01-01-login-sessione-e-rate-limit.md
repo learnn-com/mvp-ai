@@ -1,5 +1,8 @@
 # US-EP01-01 — Login email/password e sessione (JWT/Strapi)
 
+**Story Status:** In Progress  
+**Assignee:** team (filesystem PM — aggiornamento locale)
+
 ## Incremento corrente: **auth mock** (nessun server)
 
 In questa tornata **non** è richiesto Strapi né API login reali: implementare un **layer di autenticazione mock** (es. adapter) che simula successo/errore, emette un **token fittizio** con **shape** allineato al futuro JWT Strapi, e consente di sostituire il mock con una sola integrazione quando il backend sarà disponibile. Il **rate limiting** lato server resta fuori scope; eventuale limite tentativi solo come opzione client-side documentata.
@@ -75,17 +78,17 @@ Mock schermata login (titolo “Benvenuto”, campi pill Email/Password, CTA “
 
 ### Development Completion
 
-- [ ] Tutti gli acceptance criteria verificati in locale.
-- [ ] Adapter **auth mock** + punto di swap documentato (interfaccia verso futuro client Strapi).
-- [ ] Token mock con **shape** documentata (header/payload minimi attesi dal frontend).
-- [ ] Persistenza sessione implementata e coerente con la strategia in Technical Analysis.
-- [ ] `pnpm quality-gate` (o gate adottato in [way-of-working.md](../../tech/way-of-working.md)) eseguito con successo sulla parte di codice toccata.
+- [x] Tutti gli acceptance criteria verificati in locale.
+- [x] Adapter **auth mock** + punto di swap documentato (interfaccia verso futuro client Strapi).
+- [x] Token mock con **shape** documentata (header/payload minimi attesi dal frontend).
+- [x] Persistenza sessione implementata e coerente con la strategia in Technical Analysis.
+- [x] `pnpm quality-gate` (o gate adottato in [way-of-working.md](../../tech/way-of-working.md)) eseguito con successo sulla parte di codice toccata.
 
 ### Quality Assurance
 
-- [ ] Test automatici su logica mock (unit/integration) senza Strapi in CI.
-- [ ] Smoke manuale o E2E leggero: login ok, credenziali errate, persistenza al reload, logout.
-- [ ] Accessibilità base su form e messaggi errore (label, `aria-*` dove applicabile).
+- [x] Test automatici su logica mock (unit/integration) senza Strapi in CI.
+- [x] Smoke manuale o E2E leggero: login ok, credenziali errate, persistenza al reload, logout.
+- [x] Accessibilità base su form e messaggi errore (label, `aria-*` dove applicabile).
 
 ### Deployment and Release
 
@@ -159,6 +162,7 @@ Titolo storico “rate limit”: in questo incremento solo menzione in edge case
 ### Technical Requirements
 
 - **Persistenza (decisione MVP mock):** uso di **`localStorage` o `sessionStorage`** per il token mock, con nota sui limiti XSS rispetto a cookie **httpOnly** (quando Strapi sarà in uso, rivalutare con ADR dedicata). Preferenza team: **localStorage** per simulare “resta loggato” al reload, salvo vincoli PWA documentati.
+- **Implementazione (2026-04-12):** `createResilientSessionStorage` in `apps/web/src/features/auth/storage/auth-storage.ts` — scrive su `localStorage` quando disponibile; se `setItem` fallisce, mantiene comunque la sessione in **RAM** (fallback documentato per storage bloccato).
 - **Route Home:** allineare alla convenzione del router esistente o placeholder `/` — registrare la path effettiva nella PR.
 - **Sicurezza MVP mock:** nessun dato reale; token non deve essere loggato in console in produzione.
 
@@ -176,12 +180,12 @@ Titolo storico “rate limit”: in questo incremento solo menzione in edge case
 
 ## Task Breakdown
 
-- [ ] **T-1**: Contratti auth, documentazione token mock e credenziali di test
-- [ ] **T-2**: Adapter `MockAuthProvider`, storage sessione e gestione token (incl. scadenza/corruzione)
-- [ ] **T-3**: Schermata Login (form, validazione, errori, stato `:active` CTA)
-- [ ] **T-4**: Bootstrap sessione al reload, route protette e redirect post-login
-- [ ] **T-5**: Logout, pulizia storage e riallineamento guard
-- [ ] **T-6**: Test automatici, smoke manuale/E2E leggero e note limite client/throttle
+- [x] **T-1**: Contratti auth, documentazione token mock e credenziali di test
+- [x] **T-2**: Adapter `MockAuthProvider`, storage sessione e gestione token (incl. scadenza/corruzione)
+- [x] **T-3**: Schermata Login (form, validazione, errori, stato `:active` CTA)
+- [x] **T-4**: Bootstrap sessione al reload, route protette e redirect post-login
+- [x] **T-5**: Logout, pulizia storage e riallineamento guard
+- [x] **T-6**: Test automatici, smoke manuale/E2E leggero e note limite client/throttle
 
 ### Dependency Graph
 
