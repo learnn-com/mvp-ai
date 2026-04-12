@@ -1,5 +1,9 @@
 # US-EP02-02 — Home: slider corsi/webinar multi-episodio per categoria (mock)
 
+**Story status (filesystem PM):** In Progress — implementazione su branch `feature/us-ep02-02-home-slider-serie-categoria` da `feature/us-ep02-01-home-header-notifiche`.
+
+**Route stub:** `/category/:slug` (categoria WIP), `/series/:seriesId` (overview contenuto WIP, allineamento EP-03).
+
 ## Story Statement
 
 **Come** utente **voglio** uno slider orizzontale di corsi o webinar “a puntate” (contenuto multiplo) della stessa categoria, con “Vedi tutti” **affinché** esplori la categoria senza ancora dipendere da Strapi in questa release.
@@ -93,14 +97,14 @@ Sotto l’immagine: titolo in evidenza; riga autore — professione (es. grigio 
 
 ### Development Completion
 
-- [ ] Tutti gli acceptance criteria soddisfatti in locale.
-- [ ] Mock sezioni in modulo dedicato (config array ≥2 sezioni per demo).
-- [ ] Route “Vedi tutti” + pagina WIP categoria collegate nel router.
-- [ ] `pnpm quality-gate` (o gate in [way-of-working.md](../../tech/way-of-working.md)) verde sulla parte toccata.
+- [x] Tutti gli acceptance criteria soddisfatti in locale.
+- [x] Mock sezioni in modulo dedicato (config array ≥2 sezioni per demo).
+- [x] Route “Vedi tutti” + pagina WIP categoria collegate nel router.
+- [x] `pnpm quality-gate` (o gate in [way-of-working.md](../../tech/way-of-working.md)) verde sulla parte toccata.
 
 ### Quality Assurance
 
-- [ ] Test su: limite 5 item, badge webinar vs corso, conteggio thumb, caption, assenza HD/CC/AU/TX, navigazione “Vedi tutti”, tap card (navigazione o WIP).
+- [x] Test su: limite 5 item, badge webinar vs corso, conteggio thumb, caption, assenza HD/CC/AU/TX, navigazione “Vedi tutti”, tap card (navigazione o WIP).
 - [ ] Smoke manuale: scroll orizzontale touch e mouse; verifica 4:5 su viewport mobile (DevTools o device).
 
 ### Deployment and Release
@@ -189,12 +193,12 @@ Allineamento a [catalog-and-publishing.md](../../tech/boundedcontext/catalog-and
 
 ## Task Breakdown
 
-- [ ] **T-1**: Tipi `CatalogSeriesItem` / `CatalogSeriesSection` e fixture Home (≥2 sezioni, trim a 5)
-- [ ] **T-2**: `SeriesCard`: thumb 4:5, badge WEBINAR, tab conteggio, caption, fuori scope HD/CC/AU/TX
-- [ ] **T-3**: `SeriesCategorySlider`: header sezione, “Vedi tutti”, scroll orizzontale, strategia sezione vuota, a11y
-- [ ] **T-4**: Route pagina categoria WIP + route overview contenuto (tap card); convenzione path in PR
-- [ ] **T-5**: Integrazione Home sotto header (composizione sezioni mock)
-- [ ] **T-6**: Test RTL, smoke manuale scroll/mobile, `pnpm quality-gate`
+- [x] **T-1**: Tipi `CatalogSeriesItem` / `CatalogSeriesSection` e fixture Home (≥2 sezioni, trim a 5)
+- [x] **T-2**: `SeriesCard`: thumb 4:5, badge WEBINAR, tab conteggio, caption, fuori scope HD/CC/AU/TX
+- [x] **T-3**: `SeriesCategorySlider`: header sezione, “Vedi tutti”, scroll orizzontale, strategia sezione vuota, a11y
+- [x] **T-4**: Route pagina categoria WIP + route overview contenuto (tap card); convenzione path in PR
+- [x] **T-5**: Integrazione Home sotto header (composizione sezioni mock)
+- [x] **T-6**: Test RTL, smoke manuale scroll/mobile, `pnpm quality-gate`
 
 ### Dependency Graph
 

@@ -10,7 +10,12 @@ export type NotificationTrayProps = {
   onLogout: () => void
 }
 
-export function NotificationTray({ open, onOpenChange, titles, onLogout }: NotificationTrayProps) {
+export function NotificationTray({
+  open,
+  onOpenChange,
+  titles,
+  onLogout,
+}: NotificationTrayProps) {
   const titleId = useId()
   const closeBtnRef = useRef<HTMLButtonElement>(null)
 
@@ -64,11 +69,16 @@ export function NotificationTray({ open, onOpenChange, titles, onLogout }: Notif
           </button>
         </div>
         {titles.length === 0 ? (
-          <p className="text-sm text-muted-foreground">Nessuna notifica da mostrare.</p>
+          <p className="text-sm text-muted-foreground">
+            Nessuna notifica da mostrare.
+          </p>
         ) : (
           <ul className="max-h-64 space-y-2 overflow-y-auto">
             {titles.map((t, index) => (
-              <li key={`${index}-${t}`} className="text-sm font-medium leading-snug">
+              <li
+                key={`${index}-${t}`}
+                className="text-sm font-medium leading-snug"
+              >
                 {t}
               </li>
             ))}

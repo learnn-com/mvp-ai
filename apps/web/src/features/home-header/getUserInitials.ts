@@ -1,6 +1,8 @@
 import type { AuthUser } from '@/features/auth/contracts/auth.contract'
 
-export function getUserInitials(user: Pick<AuthUser, 'email' | 'username'>): string {
+export function getUserInitials(
+  user: Pick<AuthUser, 'email' | 'username'>,
+): string {
   const name = user.username?.trim()
   if (name) {
     const parts = name.split(/\s+/).filter(Boolean)

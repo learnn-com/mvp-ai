@@ -17,7 +17,11 @@ export const notificationsUnreadPositive: NotificationItem[] = [
 ]
 
 export class MockNotificationAdapter implements NotificationPort {
-  constructor(private readonly items: NotificationItem[]) {}
+  private readonly items: NotificationItem[]
+
+  constructor(items: NotificationItem[]) {
+    this.items = items
+  }
 
   listNotifications(): NotificationItem[] {
     return [...this.items]

@@ -10,7 +10,9 @@ export type NotificationSummary = {
   showBadge: boolean
 }
 
-export function computeNotificationSummary(port: NotificationPort): NotificationSummary {
+export function computeNotificationSummary(
+  port: NotificationPort,
+): NotificationSummary {
   const items = port.listNotifications()
   const unread = items.filter((n) => !n.read)
   const unreadCount = unread.length

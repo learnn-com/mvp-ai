@@ -1,8 +1,14 @@
 import { renderHook } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
-import { MockNotificationAdapter, notificationsUnreadZero } from './notifications.mock'
-import { computeNotificationSummary, useNotificationSummary } from './useNotificationSummary'
+import {
+  MockNotificationAdapter,
+  notificationsUnreadZero,
+} from './notifications.mock'
+import {
+  computeNotificationSummary,
+  useNotificationSummary,
+} from './useNotificationSummary'
 
 describe('computeNotificationSummary', () => {
   it('count 0 e nessun badge se tutte lette', () => {
@@ -24,7 +30,9 @@ describe('computeNotificationSummary', () => {
   })
 
   it('edge: non lette ma titolo vuoto → nessun badge e lista titoli vuota', () => {
-    const port: { listNotifications: () => { id: string; title: string; read: boolean }[] } = {
+    const port: {
+      listNotifications: () => { id: string; title: string; read: boolean }[]
+    } = {
       listNotifications: () => [{ id: 'x', title: '', read: false }],
     }
     const s = computeNotificationSummary(port)
