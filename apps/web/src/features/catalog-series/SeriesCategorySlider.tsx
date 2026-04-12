@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { buildCategorySeeAllHref } from './catalogRoutes'
 import type { CatalogSeriesSection } from './catalog-series.types'
 import { SeriesCard } from './SeriesCard'
+import { SliderScrollRow } from './SliderScrollRow'
 import { takeVisibleItems } from './takeVisibleItems'
 
 export type SeriesCategorySliderProps = {
@@ -44,11 +45,11 @@ export function SeriesCategorySlider({
           Vedi tutto &gt;
         </Link>
       </div>
-      <div className="scrollbar-hide flex snap-x snap-mandatory gap-3 overflow-x-auto pb-1 [-webkit-overflow-scrolling:touch]">
+      <SliderScrollRow>
         {visible.map((item) => (
           <SeriesCard key={item.id} item={item} className="snap-start" />
         ))}
-      </div>
+      </SliderScrollRow>
     </section>
   )
 }

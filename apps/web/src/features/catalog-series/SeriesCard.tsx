@@ -15,12 +15,12 @@ export function SeriesCard({ item, className }: SeriesCardProps) {
     <Link
       to={`/series/${item.id}`}
       className={cn(
-        'flex w-[42vw] max-w-[11rem] shrink-0 snap-start flex-col overflow-hidden rounded-xl text-left outline-none ring-offset-background',
+        'flex w-[42vw] max-w-[11rem] shrink-0 snap-start flex-col gap-1 text-left outline-none ring-offset-background',
         'transition-opacity hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring sm:max-w-[12rem]',
         className,
       )}
     >
-      <div className="relative aspect-[4/5] w-full shrink-0 overflow-hidden rounded-t-xl bg-muted">
+      <div className="relative aspect-video w-full shrink-0 overflow-hidden rounded-xl border border-white/20 bg-muted">
         <img
           src={item.thumbnailUrl || PLACEHOLDER_THUMB}
           alt=""
@@ -40,21 +40,25 @@ export function SeriesCard({ item, className }: SeriesCardProps) {
             WEBINAR
           </span>
         ) : null}
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-[42%] bg-gradient-to-t from-black/85 via-black/35 to-transparent"
+          aria-hidden
+        />
         <span
-          className="absolute bottom-2 right-2 rounded bg-violet-600 px-2 py-0.5 text-xs font-semibold text-white tabular-nums shadow-sm"
+          className="absolute bottom-2 right-2 text-xs font-bold tabular-nums text-white drop-shadow-sm"
           data-testid="series-card-episode-count"
         >
           {item.episodeCount}
         </span>
       </div>
-      <div className="flex min-h-0 flex-1 flex-col gap-1 rounded-b-xl bg-black p-3">
+      <div className="flex min-h-0 flex-1 flex-col gap-1 rounded-xl bg-black px-2 py-2.5">
         <p className="line-clamp-2 text-sm font-semibold leading-snug text-foreground">
           {item.title}
         </p>
         <p className="line-clamp-2 text-xs text-muted-foreground">
           {item.authorName} — {item.authorRole}
         </p>
-        <p className="text-xs text-muted-foreground">
+        <p className="text-xs font-bold text-muted-foreground">
           {item.totalDurationLabel}
         </p>
       </div>

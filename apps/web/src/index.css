@@ -34,6 +34,18 @@
   body {
     @apply min-h-dvh bg-background text-foreground antialiased;
   }
+
+  /* Scroll verticale pagina senza barra visibile (webkit + Firefox) */
+  html,
+  body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /* Slider orizzontali: scroll senza barra visibile (webkit + Firefox) */
