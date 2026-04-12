@@ -35,3 +35,15 @@
     @apply min-h-dvh bg-background text-foreground antialiased;
   }
 }
+
+/* Slider orizzontali: scroll senza barra visibile (webkit + Firefox) */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}

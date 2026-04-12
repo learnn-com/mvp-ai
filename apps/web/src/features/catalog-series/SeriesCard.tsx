@@ -15,12 +15,12 @@ export function SeriesCard({ item, className }: SeriesCardProps) {
     <Link
       to={`/series/${item.id}`}
       className={cn(
-        'block w-[42vw] max-w-[11rem] shrink-0 snap-start overflow-hidden rounded-xl bg-card text-left outline-none ring-offset-background',
-        'transition-transform hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring sm:max-w-[12rem]',
+        'flex w-[42vw] max-w-[11rem] shrink-0 snap-start flex-col overflow-hidden rounded-xl text-left outline-none ring-offset-background',
+        'transition-opacity hover:opacity-95 focus-visible:ring-2 focus-visible:ring-ring sm:max-w-[12rem]',
         className,
       )}
     >
-      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-muted">
+      <div className="relative aspect-[4/5] w-full shrink-0 overflow-hidden rounded-t-xl bg-muted">
         <img
           src={item.thumbnailUrl || PLACEHOLDER_THUMB}
           alt=""
@@ -47,7 +47,7 @@ export function SeriesCard({ item, className }: SeriesCardProps) {
           {item.episodeCount}
         </span>
       </div>
-      <div className="space-y-1 px-0.5 pt-2">
+      <div className="flex min-h-0 flex-1 flex-col gap-1 rounded-b-xl bg-black p-3">
         <p className="line-clamp-2 text-sm font-semibold leading-snug text-foreground">
           {item.title}
         </p>

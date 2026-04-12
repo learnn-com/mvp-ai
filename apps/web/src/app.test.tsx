@@ -34,10 +34,9 @@ describe('webapp routes', () => {
     ).toBeInTheDocument()
     expect(screen.getByTestId('home-header')).toBeInTheDocument()
     expect(
-      screen.getByRole('button', { name: /componente shadcn/i }),
-    ).toBeInTheDocument()
-    expect(await screen.findByRole('heading', { name: 'Sviluppo' })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: 'Design' })).toBeInTheDocument()
+      await screen.findAllByRole('heading', { name: 'Sviluppo' }),
+    ).toHaveLength(2)
+    expect(screen.getAllByRole('heading', { name: 'Design' })).toHaveLength(2)
   })
 
   it('route categoria WIP risponde senza 404', async () => {
@@ -56,6 +55,39 @@ describe('webapp routes', () => {
     ).toBeInTheDocument()
   })
 
+  it('route categoria con view=singles mostra indicatore vista', async () => {
+    const storage = createMemorySessionStorage()
+    await seedAuthenticatedSession(storage)
+    const router = createMemoryRouter(appRoutes, {
+      initialEntries: ['/category/design?view=singles'],
+    })
+    render(
+      <MockAuthProvider storage={storage}>
+        <RouterProvider router={router} />
+      </MockAuthProvider>,
+    )
+    expect(
+      await screen.findByTestId('category-wip-view-singles'),
+    ).toBeInTheDocument()
+  })
+
+  it('route dettaglio contenuto singolo WIP risponde senza 404', async () => {
+    const storage = createMemorySessionStorage()
+    await seedAuthenticatedSession(storage)
+    const router = createMemoryRouter(appRoutes, {
+      initialEntries: ['/content/single-dev-0'],
+    })
+    render(
+      <MockAuthProvider storage={storage}>
+        <RouterProvider router={router} />
+      </MockAuthProvider>,
+    )
+    expect(
+      await screen.findByRole('heading', { level: 1, name: 'Contenuto' }),
+    ).toBeInTheDocument()
+    expect(screen.getByText(/single-dev-0/)).toBeInTheDocument()
+  })
+
   it('route overview serie WIP risponde senza 404', async () => {
     const storage = createMemorySessionStorage()
     await seedAuthenticatedSession(storage)
@@ -67,7 +99,9 @@ describe('webapp routes', () => {
         <RouterProvider router={router} />
       </MockAuthProvider>,
     )
-    expect(await screen.findByRole('heading', { level: 1, name: 'Contenuto' })).toBeInTheDocument()
+    expect(
+      await screen.findByRole('heading', { level: 1, name: 'Contenuto' }),
+    ).toBeInTheDocument()
     expect(screen.getByText(/s1/)).toBeInTheDocument()
   })
 

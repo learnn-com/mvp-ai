@@ -27,3 +27,25 @@ export type CatalogSeriesSection = {
   slug: string
   items: CatalogSeriesItem[]
 }
+
+/**
+ * Contenuto singolo (non serializzato) — mock client, allineabile a Strapi.
+ */
+export type CatalogSingleItem = {
+  id: string
+  title: string
+  /** Testo breve sotto il titolo (caption). */
+  shortDescription: string
+  thumbnailUrl: string
+  /** Slug categoria per “Vedi tutti” / WIP. */
+  categorySlug: string
+  /** Nome categoria per label/accessibilità. */
+  categoryTitle: string
+}
+
+export type CatalogSingleSection = {
+  id: string
+  categoryLabel: string
+  slug: string
+  items: CatalogSingleItem[]
+}
