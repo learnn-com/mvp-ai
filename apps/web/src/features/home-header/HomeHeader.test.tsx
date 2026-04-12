@@ -6,16 +6,30 @@ import { MockNotificationAdapter, notificationsUnreadZero } from './notification
 
 const user = { id: '1', email: 'test@example.com', username: 'Mario Rossi' }
 
+const noopLogout = () => {}
+
 describe('HomeHeader', () => {
   it('mostra wordmark Learnn e iniziali utente', () => {
-    render(<HomeHeader user={user} notificationPort={new MockNotificationAdapter(notificationsUnreadZero)} />)
+    render(
+      <HomeHeader
+        user={user}
+        onLogout={noopLogout}
+        notificationPort={new MockNotificationAdapter(notificationsUnreadZero)}
+      />,
+    )
     const header = screen.getByTestId('home-header')
     expect(within(header).getByText('Learnn')).toBeInTheDocument()
     expect(within(header).getByText('MR')).toBeInTheDocument()
   })
 
   it('senza non lette non mostra badge', () => {
-    render(<HomeHeader user={user} notificationPort={new MockNotificationAdapter(notificationsUnreadZero)} />)
+    render(
+      <HomeHeader
+        user={user}
+        onLogout={noopLogout}
+        notificationPort={new MockNotificationAdapter(notificationsUnreadZero)}
+      />,
+    )
     expect(screen.queryByTestId('home-header-badge')).not.toBeInTheDocument()
   })
 
@@ -23,6 +37,7 @@ describe('HomeHeader', () => {
     render(
       <HomeHeader
         user={user}
+        onLogout={noopLogout}
         notificationPort={
           new MockNotificationAdapter([{ id: 'x', title: 'Avviso', read: false }])
         }
@@ -32,7 +47,13 @@ describe('HomeHeader', () => {
   })
 
   it('non contiene link centrali Home / My Learnn nello header', () => {
-    render(<HomeHeader user={user} notificationPort={new MockNotificationAdapter(notificationsUnreadZero)} />)
+    render(
+      <HomeHeader
+        user={user}
+        onLogout={noopLogout}
+        notificationPort={new MockNotificationAdapter(notificationsUnreadZero)}
+      />,
+    )
     const header = screen.getByTestId('home-header')
     expect(within(header).queryByRole('link', { name: 'Home' })).not.toBeInTheDocument()
     expect(within(header).queryByRole('link', { name: 'My Learnn' })).not.toBeInTheDocument()
@@ -43,6 +64,7 @@ describe('HomeHeader', () => {
     render(
       <HomeHeader
         user={user}
+        onLogout={noopLogout}
         notificationPort={
           new MockNotificationAdapter([
             { id: '1', title: 'Titolo uno', read: false },

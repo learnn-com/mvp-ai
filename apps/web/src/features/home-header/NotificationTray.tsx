@@ -1,13 +1,16 @@
 import { useEffect, useId, useRef } from 'react'
 import { createPortal } from 'react-dom'
 
+import { Button } from '@/components/ui/button'
+
 export type NotificationTrayProps = {
   open: boolean
   onOpenChange: (open: boolean) => void
   titles: string[]
+  onLogout: () => void
 }
 
-export function NotificationTray({ open, onOpenChange, titles }: NotificationTrayProps) {
+export function NotificationTray({ open, onOpenChange, titles, onLogout }: NotificationTrayProps) {
   const titleId = useId()
   const closeBtnRef = useRef<HTMLButtonElement>(null)
 
@@ -71,6 +74,20 @@ export function NotificationTray({ open, onOpenChange, titles }: NotificationTra
             ))}
           </ul>
         )}
+        <div className="mt-4 border-t border-border pt-3">
+          <Button
+            type="button"
+            variant="ghost"
+            size="sm"
+            className="w-full justify-center text-muted-foreground hover:text-foreground"
+            onClick={() => {
+              onOpenChange(false)
+              onLogout()
+            }}
+          >
+            Logout
+          </Button>
+        </div>
       </div>
     </div>
   )

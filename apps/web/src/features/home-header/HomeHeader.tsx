@@ -11,11 +11,16 @@ import { useNotificationSummary } from './useNotificationSummary'
 
 export type HomeHeaderProps = {
   user: AuthUser
+  onLogout: () => void
   /** Override per test o demo; default fixture positiva. */
   notificationPort?: NotificationPort
 }
 
-export function HomeHeader({ user, notificationPort = defaultHomeNotificationPort }: HomeHeaderProps) {
+export function HomeHeader({
+  user,
+  onLogout,
+  notificationPort = defaultHomeNotificationPort,
+}: HomeHeaderProps) {
   const [open, setOpen] = useState(false)
   const { unreadCount, titles, showBadge } = useNotificationSummary(notificationPort)
   const initials = getUserInitials(user)
@@ -35,7 +40,10 @@ export function HomeHeader({ user, notificationPort = defaultHomeNotificationPor
         'bg-zinc-950 text-zinc-50',
       )}
     >
-      <span className="text-lg font-semibold tracking-tight" aria-label="Learnn">
+      <span
+        className="text-3xl font-semibold tracking-tight sm:text-4xl"
+        aria-label="Learnn"
+      >
         Learnn
       </span>
       <div className="relative shrink-0">
@@ -61,7 +69,7 @@ export function HomeHeader({ user, notificationPort = defaultHomeNotificationPor
           ) : null}
         </button>
       </div>
-      <NotificationTray open={open} onOpenChange={setOpen} titles={titles} />
+      <NotificationTray open={open} onOpenChange={setOpen} titles={titles} onLogout={onLogout} />
     </header>
   )
 }
