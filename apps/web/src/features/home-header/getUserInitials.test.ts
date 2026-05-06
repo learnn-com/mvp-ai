@@ -4,7 +4,9 @@ import { getUserInitials } from './getUserInitials'
 
 describe('getUserInitials', () => {
   it('usa username su più parole', () => {
-    expect(getUserInitials({ email: 'a@b.co', username: 'Mario Rossi' })).toBe('MR')
+    expect(getUserInitials({ email: 'a@b.co', username: 'Mario Rossi' })).toBe(
+      'MR',
+    )
   })
 
   it('usa prime due lettere username singola', () => {

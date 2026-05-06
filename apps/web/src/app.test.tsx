@@ -36,6 +36,39 @@ describe('webapp routes', () => {
     expect(
       screen.getByRole('button', { name: /componente shadcn/i }),
     ).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { name: 'Sviluppo' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Design' })).toBeInTheDocument()
+  })
+
+  it('route categoria WIP risponde senza 404', async () => {
+    const storage = createMemorySessionStorage()
+    await seedAuthenticatedSession(storage)
+    const router = createMemoryRouter(appRoutes, {
+      initialEntries: ['/category/sviluppo'],
+    })
+    render(
+      <MockAuthProvider storage={storage}>
+        <RouterProvider router={router} />
+      </MockAuthProvider>,
+    )
+    expect(
+      await screen.findByRole('heading', { level: 1, name: 'Sviluppo' }),
+    ).toBeInTheDocument()
+  })
+
+  it('route overview serie WIP risponde senza 404', async () => {
+    const storage = createMemorySessionStorage()
+    await seedAuthenticatedSession(storage)
+    const router = createMemoryRouter(appRoutes, {
+      initialEntries: ['/series/s1'],
+    })
+    render(
+      <MockAuthProvider storage={storage}>
+        <RouterProvider router={router} />
+      </MockAuthProvider>,
+    )
+    expect(await screen.findByRole('heading', { level: 1, name: 'Contenuto' })).toBeInTheDocument()
+    expect(screen.getByText(/s1/)).toBeInTheDocument()
   })
 
   it('naviga alla route Info', async () => {

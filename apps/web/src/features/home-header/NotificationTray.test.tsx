@@ -23,7 +23,12 @@ describe('NotificationTray', () => {
   it('chiude con pulsante Chiudi', () => {
     const onOpenChange = vi.fn()
     render(
-      <NotificationTray open onOpenChange={onOpenChange} titles={['A']} onLogout={() => {}} />,
+      <NotificationTray
+        open
+        onOpenChange={onOpenChange}
+        titles={['A']}
+        onLogout={() => {}}
+      />,
     )
     fireEvent.click(screen.getByRole('button', { name: 'Chiudi' }))
     expect(onOpenChange).toHaveBeenCalledWith(false)
@@ -31,7 +36,14 @@ describe('NotificationTray', () => {
 
   it('chiude con click sul backdrop', () => {
     const onOpenChange = vi.fn()
-    render(<NotificationTray open onOpenChange={onOpenChange} titles={[]} onLogout={() => {}} />)
+    render(
+      <NotificationTray
+        open
+        onOpenChange={onOpenChange}
+        titles={[]}
+        onLogout={() => {}}
+      />,
+    )
     fireEvent.click(screen.getByRole('button', { name: 'Chiudi notifiche' }))
     expect(onOpenChange).toHaveBeenCalledWith(false)
   })
@@ -39,7 +51,12 @@ describe('NotificationTray', () => {
   it('chiude con Escape', () => {
     const onOpenChange = vi.fn()
     render(
-      <NotificationTray open onOpenChange={onOpenChange} titles={['A']} onLogout={() => {}} />,
+      <NotificationTray
+        open
+        onOpenChange={onOpenChange}
+        titles={['A']}
+        onLogout={() => {}}
+      />,
     )
     fireEvent.keyDown(document, { key: 'Escape', bubbles: true })
     expect(onOpenChange).toHaveBeenCalledWith(false)
@@ -47,7 +64,12 @@ describe('NotificationTray', () => {
 
   it('non renderizza nulla se chiuso', () => {
     render(
-      <NotificationTray open={false} onOpenChange={() => {}} titles={['A']} onLogout={() => {}} />,
+      <NotificationTray
+        open={false}
+        onOpenChange={() => {}}
+        titles={['A']}
+        onLogout={() => {}}
+      />,
     )
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
   })
@@ -56,7 +78,12 @@ describe('NotificationTray', () => {
     const onOpenChange = vi.fn()
     const onLogout = vi.fn()
     render(
-      <NotificationTray open onOpenChange={onOpenChange} titles={['A']} onLogout={onLogout} />,
+      <NotificationTray
+        open
+        onOpenChange={onOpenChange}
+        titles={['A']}
+        onLogout={onLogout}
+      />,
     )
     fireEvent.click(screen.getByRole('button', { name: 'Logout' }))
     expect(onOpenChange).toHaveBeenCalledWith(false)

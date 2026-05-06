@@ -2,7 +2,10 @@ import { fireEvent, render, screen, within } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
 import { HomeHeader } from './HomeHeader'
-import { MockNotificationAdapter, notificationsUnreadZero } from './notifications.mock'
+import {
+  MockNotificationAdapter,
+  notificationsUnreadZero,
+} from './notifications.mock'
 
 const user = { id: '1', email: 'test@example.com', username: 'Mario Rossi' }
 
@@ -39,7 +42,9 @@ describe('HomeHeader', () => {
         user={user}
         onLogout={noopLogout}
         notificationPort={
-          new MockNotificationAdapter([{ id: 'x', title: 'Avviso', read: false }])
+          new MockNotificationAdapter([
+            { id: 'x', title: 'Avviso', read: false },
+          ])
         }
       />,
     )
@@ -55,8 +60,12 @@ describe('HomeHeader', () => {
       />,
     )
     const header = screen.getByTestId('home-header')
-    expect(within(header).queryByRole('link', { name: 'Home' })).not.toBeInTheDocument()
-    expect(within(header).queryByRole('link', { name: 'My Learnn' })).not.toBeInTheDocument()
+    expect(
+      within(header).queryByRole('link', { name: 'Home' }),
+    ).not.toBeInTheDocument()
+    expect(
+      within(header).queryByRole('link', { name: 'My Learnn' }),
+    ).not.toBeInTheDocument()
     expect(within(header).queryByText('My Learnn')).not.toBeInTheDocument()
   })
 

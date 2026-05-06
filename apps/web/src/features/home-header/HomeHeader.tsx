@@ -22,7 +22,8 @@ export function HomeHeader({
   notificationPort = defaultHomeNotificationPort,
 }: HomeHeaderProps) {
   const [open, setOpen] = useState(false)
-  const { unreadCount, titles, showBadge } = useNotificationSummary(notificationPort)
+  const { unreadCount, titles, showBadge } =
+    useNotificationSummary(notificationPort)
   const initials = getUserInitials(user)
 
   const triggerLabel =
@@ -69,7 +70,12 @@ export function HomeHeader({
           ) : null}
         </button>
       </div>
-      <NotificationTray open={open} onOpenChange={setOpen} titles={titles} onLogout={onLogout} />
+      <NotificationTray
+        open={open}
+        onOpenChange={setOpen}
+        titles={titles}
+        onLogout={onLogout}
+      />
     </header>
   )
 }
