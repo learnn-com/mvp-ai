@@ -10,6 +10,14 @@ export const PLACEHOLDER_THUMB =
     `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500"><rect fill="#27272a" width="400" height="500"/><text x="50%" y="50%" fill="#a1a1aa" font-family="system-ui" font-size="14" text-anchor="middle" dominant-baseline="middle">thumb</text></svg>`,
   )
 
+/**
+ * Thumb mock “divertenti” — Picsum con seed stabile (stessa immagine per stesso seed).
+ * In `SeriesCard`, `onError` ripiega su {@link PLACEHOLDER_THUMB} se la rete non c’è (test/offline).
+ */
+export function funCatalogThumb(seed: string): string {
+  return `https://picsum.photos/seed/${encodeURIComponent(seed)}/400/500`
+}
+
 function item(
   partial: Omit<CatalogSeriesItem, 'categoryKey' | 'categorySlug'> & {
     categoryKey?: string
@@ -36,7 +44,7 @@ const sviluppoItems: CatalogSeriesItem[] = [
       authorRole: 'Lead Developer',
       totalDurationLabel: '1h 20min',
       episodeCount: 16,
-      thumbnailUrl: PLACEHOLDER_THUMB,
+      thumbnailUrl: funCatalogThumb('duck-typescript'),
     },
     'dev',
     'sviluppo',
@@ -50,7 +58,7 @@ const sviluppoItems: CatalogSeriesItem[] = [
       authorRole: 'Frontend Engineer',
       totalDurationLabel: '45min',
       episodeCount: 8,
-      thumbnailUrl: PLACEHOLDER_THUMB,
+      thumbnailUrl: funCatalogThumb('corgi-react'),
     },
     'dev',
     'sviluppo',
@@ -64,7 +72,7 @@ const sviluppoItems: CatalogSeriesItem[] = [
       authorRole: 'Backend Developer',
       totalDurationLabel: '2h 10min',
       episodeCount: 12,
-      thumbnailUrl: PLACEHOLDER_THUMB,
+      thumbnailUrl: funCatalogThumb('llama-node'),
     },
     'dev',
     'sviluppo',
@@ -78,7 +86,7 @@ const sviluppoItems: CatalogSeriesItem[] = [
       authorRole: 'Solutions Architect',
       totalDurationLabel: '55min',
       episodeCount: 6,
-      thumbnailUrl: PLACEHOLDER_THUMB,
+      thumbnailUrl: funCatalogThumb('owl-graphql'),
     },
     'dev',
     'sviluppo',
@@ -92,7 +100,7 @@ const sviluppoItems: CatalogSeriesItem[] = [
       authorRole: 'QA Lead',
       totalDurationLabel: '3h',
       episodeCount: 20,
-      thumbnailUrl: PLACEHOLDER_THUMB,
+      thumbnailUrl: funCatalogThumb('fox-testing'),
     },
     'dev',
     'sviluppo',
@@ -106,7 +114,7 @@ const sviluppoItems: CatalogSeriesItem[] = [
       authorRole: 'DevOps',
       totalDurationLabel: '1h 5min',
       episodeCount: 5,
-      thumbnailUrl: PLACEHOLDER_THUMB,
+      thumbnailUrl: funCatalogThumb('bee-micro'),
     },
     'dev',
     'sviluppo',
@@ -120,7 +128,7 @@ const sviluppoItems: CatalogSeriesItem[] = [
       authorRole: 'Security Engineer',
       totalDurationLabel: '1h 40min',
       episodeCount: 10,
-      thumbnailUrl: PLACEHOLDER_THUMB,
+      thumbnailUrl: funCatalogThumb('hedgehog-security'),
     },
     'dev',
     'sviluppo',
@@ -137,7 +145,7 @@ const designItems: CatalogSeriesItem[] = [
       authorRole: 'Product Designer',
       totalDurationLabel: '50min',
       episodeCount: 4,
-      thumbnailUrl: PLACEHOLDER_THUMB,
+      thumbnailUrl: funCatalogThumb('parrot-ui-motion'),
     },
     'design',
     'design',
@@ -151,7 +159,7 @@ const designItems: CatalogSeriesItem[] = [
       authorRole: 'UX Designer',
       totalDurationLabel: '1h 15min',
       episodeCount: 9,
-      thumbnailUrl: PLACEHOLDER_THUMB,
+      thumbnailUrl: funCatalogThumb('panda-figma'),
     },
     'design',
     'design',
@@ -165,7 +173,7 @@ const designItems: CatalogSeriesItem[] = [
       authorRole: 'Accessibility Specialist',
       totalDurationLabel: '2h',
       episodeCount: 7,
-      thumbnailUrl: PLACEHOLDER_THUMB,
+      thumbnailUrl: funCatalogThumb('raccoon-a11y'),
     },
     'design',
     'design',

@@ -1,26 +1,26 @@
 import { Link } from 'react-router-dom'
 
 import { buildCategorySeeAllHref } from './catalogRoutes'
-import type { CatalogSeriesSection } from './catalog-series.types'
-import { SeriesCard } from './SeriesCard'
+import type { CatalogSingleSection } from './catalog-series.types'
+import { SingleContentCard } from './SingleContentCard'
 import { SliderScrollRow } from './SliderScrollRow'
-import { takeVisibleItems } from './takeVisibleItems'
+import { takeVisibleSingleItems } from './takeVisibleItems'
 
-export type SeriesCategorySliderProps = {
-  section: CatalogSeriesSection
+export type SingleCategorySliderProps = {
+  section: CatalogSingleSection
   headingLevel?: 2 | 3
 }
 
-export function SeriesCategorySlider({
+export function SingleCategorySlider({
   section,
   headingLevel = 2,
-}: SeriesCategorySliderProps) {
-  const visible = takeVisibleItems(section.items)
+}: SingleCategorySliderProps) {
+  const visible = takeVisibleSingleItems(section.items)
   if (visible.length === 0) {
     return null
   }
 
-  const titleId = `series-section-${section.id}`
+  const titleId = `single-section-${section.id}`
   const HeadingTag = headingLevel === 2 ? 'h2' : 'h3'
 
   return (
@@ -28,7 +28,7 @@ export function SeriesCategorySlider({
       className="flex flex-col gap-3"
       role="region"
       aria-labelledby={titleId}
-      data-testid={`series-slider-${section.slug}`}
+      data-testid={`single-slider-${section.slug}`}
     >
       <div className="flex items-center justify-between gap-3">
         <HeadingTag
@@ -38,7 +38,7 @@ export function SeriesCategorySlider({
           {section.categoryLabel}
         </HeadingTag>
         <Link
-          to={buildCategorySeeAllHref(section.slug, 'series')}
+          to={buildCategorySeeAllHref(section.slug, 'singles')}
           className="shrink-0 text-sm text-muted-foreground transition-colors hover:text-foreground"
           aria-label={`Vedi tutti i contenuti in ${section.categoryLabel}`}
         >
@@ -47,7 +47,7 @@ export function SeriesCategorySlider({
       </div>
       <SliderScrollRow>
         {visible.map((item) => (
-          <SeriesCard key={item.id} item={item} className="snap-start" />
+          <SingleContentCard key={item.id} item={item} className="snap-start" />
         ))}
       </SliderScrollRow>
     </section>

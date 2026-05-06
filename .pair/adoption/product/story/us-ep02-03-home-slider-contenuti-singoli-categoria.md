@@ -82,14 +82,14 @@ Allineamento a **card catalogo mobile 4:5** e pattern slider orizzontale come da
 
 ### Development Completion
 
-- [ ] Tutti gli acceptance criteria verificati in locale.
-- [ ] Fixture mock dedicata contenuti singoli (≥2 sezioni; caso >10 item).
-- [ ] Convenzione routing “Vedi tutti” **unificata** con US-EP02-02 (documentata in codice o README dev breve).
-- [ ] `pnpm quality-gate` (o gate in [way-of-working.md](../../tech/way-of-working.md)) verde sulla parte toccata.
+- [x] Tutti gli acceptance criteria verificati in locale.
+- [x] Fixture mock dedicata contenuti singoli (≥2 sezioni; caso >10 item).
+- [x] Convenzione routing “Vedi tutti” **unificata** con US-EP02-02 (documentata in codice o README dev breve).
+- [x] `pnpm quality-gate` (o gate in [way-of-working.md](../../tech/way-of-working.md)) verde sulla parte toccata.
 
 ### Quality Assurance
 
-- [ ] Test: limite 10, clamp 2 righe, assenza badge/tab serie, navigazione WIP, scroll orizzontale.
+- [x] Test: limite 10, clamp 2 righe, assenza badge/tab serie, navigazione WIP, scroll orizzontale.
 - [ ] Smoke manuale: confronto affiancato slider serie vs singoli (nessuna regressione visiva grave).
 
 ### Deployment and Release
@@ -175,12 +175,12 @@ Nessuno.
 
 ## Task Breakdown
 
-- [ ] **T-1**: Tipi `CatalogSingleItem` / `CatalogSingleSection` e fixture `home-single-sections.mock.ts`
-- [ ] **T-2**: `SingleContentCard`: thumb 4:5, caption titolo + breve (clamp 2 righe), niente chrome serie
-- [ ] **T-3**: `SingleCategorySlider` (o composizione su shell condivisa): max 10, scroll, header “Vedi tutti”
-- [ ] **T-4**: Helper routing `buildCategoryHref` / convenzione unificata con [US-EP02-02](./us-ep02-02-home-slider-corsi-webinar-serie-categoria.md) + tap verso stub dettaglio
-- [ ] **T-5**: Integrazione Home (sotto slider serie / ordine documentato)
-- [ ] **T-6**: Test RTL, smoke affiancato EP02-02, `pnpm quality-gate`
+- [x] **T-1**: Tipi `CatalogSingleItem` / `CatalogSingleSection` e fixture `home-single-sections.mock.ts`
+- [x] **T-2**: `SingleContentCard`: thumb 4:5, caption titolo + breve (clamp 2 righe), niente chrome serie
+- [x] **T-3**: `SingleCategorySlider` (o composizione su shell condivisa): max 10, scroll, header “Vedi tutti”
+- [x] **T-4**: Helper routing `buildCategoryHref` / convenzione unificata con [US-EP02-02](./us-ep02-02-home-slider-corsi-webinar-serie-categoria.md) + tap verso stub dettaglio
+- [x] **T-5**: Integrazione Home (sotto slider serie / ordine documentato)
+- [x] **T-6**: Test RTL, smoke affiancato EP02-02, `pnpm quality-gate`
 
 ### Dependency Graph
 

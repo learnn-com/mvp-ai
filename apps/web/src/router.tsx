@@ -6,6 +6,7 @@ import { RequireAuth } from '@/features/auth/components/RequireAuth'
 import { LoginPage } from '@/features/auth/pages/LoginPage'
 import { AboutPage } from '@/pages/AboutPage'
 import { CategoryWipPage } from '@/pages/CategoryWipPage'
+import { ContentOverviewWipPage } from '@/pages/ContentOverviewWipPage'
 import { HomePage } from '@/pages/HomePage'
 import { NotFoundPage } from '@/pages/NotFoundPage'
 import { SeriesOverviewWipPage } from '@/pages/SeriesOverviewWipPage'
@@ -27,6 +28,7 @@ export const appRoutes: RouteObject[] = [
       { path: 'about', element: <AboutPage /> },
       { path: 'category/:slug', element: <CategoryWipPage /> },
       { path: 'series/:seriesId', element: <SeriesOverviewWipPage /> },
+      { path: 'content/:contentId', element: <ContentOverviewWipPage /> },
       { path: '*', element: <NotFoundPage /> },
     ],
   },
