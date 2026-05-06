@@ -13,7 +13,7 @@ In questa tornata si crea il **package webapp** nel monorepo: toolchain (es. **V
 ## Epic Context
 
 **Parent Epic**: [EP-00 — Piattaforma e fondamenta](../epic/ep-00-foundation-platform.md)  
-**Status**: Refined  
+**Status**: In Progress  
 **Priority**: P0 (Must-Have)
 
 ### Status Workflow
@@ -64,19 +64,19 @@ In questa tornata si crea il **package webapp** nel monorepo: toolchain (es. **V
 
 ### Development Completion
 
-- [ ] Tutti gli acceptance criteria verificati in locale.
-- [ ] Package webapp registrato nel workspace monorepo e in `turbo`/pipeline se usati.
-- [ ] `pnpm quality-gate` (o variante documentata con filter webapp) verde sulla parte toccata.
-- [ ] Build prod locale genera artefatti statici **pronti** per futuro deploy (deploy non eseguito in questa US).
+- [x] Tutti gli acceptance criteria verificati in locale.
+- [x] Package webapp registrato nel workspace monorepo e in `turbo`/pipeline se usati.
+- [x] `pnpm quality-gate` (o variante documentata con filter webapp) verde sulla parte toccata.
+- [x] Build prod locale genera artefatti statici **pronti** per futuro deploy (deploy non eseguito in questa US).
 
 ### Quality Assurance
 
-- [ ] Smoke: avvio dev, navigazione placeholder, build una tantum, `pnpm preview` opzionale.
-- [ ] Nessuna dipendenza runtime da Strapi obbligatoria per avviare la webapp.
+- [x] Smoke: avvio dev, navigazione placeholder, build una tantum, `pnpm preview` opzionale.
+- [x] Nessuna dipendenza runtime da Strapi obbligatoria per avviare la webapp.
 
 ### Deployment (questo incremento)
 
-- [ ] Nessun deploy cloud richiesto; README indica che S3/CloudFront è story/incremento separato.
+- [x] Nessun deploy cloud richiesto; README indica che S3/CloudFront è story/incremento separato.
 
 ## Story Sizing and Sprint Readiness
 
@@ -115,12 +115,12 @@ Nessuno se lo stack Vite+React+Tailwind+shadcn è confermato; altrimenti micro-s
 
 ## Task Breakdown
 
-- [ ] **T-1**: Scaffold package webapp (Vite React TS) e registrazione workspace / turbo
-- [ ] **T-2**: Tailwind + PostCSS + `content` paths + CSS globale
-- [ ] **T-3**: shadcn/ui init e componente UI minimo di verifica sulla Home
-- [ ] **T-4**: React Router, layout root, route Home placeholder (e opzionale `*`)
-- [ ] **T-5**: Script `lint` / typecheck / test nel package; wiring `pnpm quality-gate`; README dev
-- [ ] **T-6**: Verifica build prod, smoke, nota esplicita “deploy cloud fuori scope”
+- [x] **T-1**: Scaffold package webapp (Vite React TS) e registrazione workspace / turbo
+- [x] **T-2**: Tailwind + PostCSS + `content` paths + CSS globale
+- [x] **T-3**: shadcn/ui init e componente UI minimo di verifica sulla Home
+- [x] **T-4**: React Router, layout root, route Home placeholder (e opzionale `*`)
+- [x] **T-5**: Script `lint` / typecheck / test nel package; wiring `pnpm quality-gate`; README dev
+- [x] **T-6**: Verifica build prod, smoke, nota esplicita “deploy cloud fuori scope”
 
 ### Dependency Graph
 
