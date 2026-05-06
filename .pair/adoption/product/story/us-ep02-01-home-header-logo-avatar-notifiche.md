@@ -1,5 +1,7 @@
 # US-EP02-01 — Header Home: logo, avatar notifiche e badge
 
+**Story status (filesystem PM):** In Progress — assegnazione locale sviluppatore.
+
 ## Story Statement
 
 **Come** utente sulla Home **voglio** un header con logo e avatar che apre le notifiche, con badge se ci sono notifiche non lette **affinché** capisca subito se c’è qualcosa da leggere senza navigazioni extra in questa release.
@@ -76,13 +78,13 @@ Il mockup include **“Home”** e **“My Learnn”** al centro: restano **fuor
 
 ### Development Completion
 
-- [ ] Tutti gli acceptance criteria verificati in locale.
-- [ ] Fixture/mock notifiche isolato in modulo dedicato (facile da sostituire con API).
+- [x] Tutti gli acceptance criteria verificati in locale.
+- [x] Fixture/mock notifiche isolato in modulo dedicato (facile da sostituire con API).
 - [ ] `pnpm quality-gate` (o comando adottato in [way-of-working.md](../../tech/way-of-working.md)) verde sulla parte toccata.
 
 ### Quality Assurance
 
-- [ ] Test UI (component/integration) per: badge assente con count 0; badge presente con count > 0; apertura/chiusura modale; assenza link “Home” / “My Learnn” nell’header.
+- [x] Test UI (component/integration) per: badge assente con count 0; badge presente con count > 0; apertura/chiusura modale; assenza link “Home” / “My Learnn” nell’header.
 - [ ] Smoke manuale su mobile vs desktop per overlay e chiusura.
 - [ ] Card ratio **4:5** sulle **card catalogo** resta nelle story slider dedicate — **non** requisito di questa story sull’avatar (solo coerenza visiva generale).
 
@@ -172,12 +174,12 @@ Incremento prodotto concordato: **mock** lato client; maschera notifiche **parzi
 
 ## Task Breakdown
 
-- [ ] **T-1**: `NotificationPort`, adapter mock e fixture notifiche (shape + ordine)
-- [ ] **T-2**: Hook `useNotificationSummary` (count non letti, titoli, edge case lista vuota)
-- [ ] **T-3**: `HomeHeader`: fondo scuro, wordmark, avatar con iniziali, assenza link centrali
-- [ ] **T-4**: `NotificationTray`: overlay/modale solo titoli, apertura da avatar, chiusura e a11y
-- [ ] **T-5**: Integrazione su route Home (layout autenticato) e nota guard EP-01
-- [ ] **T-6**: Test RTL/integration, smoke manuale, `pnpm quality-gate`
+- [x] **T-1**: `NotificationPort`, adapter mock e fixture notifiche (shape + ordine)
+- [x] **T-2**: Hook `useNotificationSummary` (count non letti, titoli, edge case lista vuota)
+- [x] **T-3**: `HomeHeader`: fondo scuro, wordmark, avatar con iniziali, assenza link centrali
+- [x] **T-4**: `NotificationTray`: overlay/modale solo titoli, apertura da avatar, chiusura e a11y
+- [x] **T-5**: Integrazione su route Home (layout autenticato) e nota guard EP-01
+- [x] **T-6**: Test RTL/integration, smoke manuale, `pnpm quality-gate`
 
 ### Dependency Graph
 

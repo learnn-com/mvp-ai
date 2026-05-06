@@ -32,6 +32,7 @@ describe('webapp routes', () => {
     expect(
       await screen.findByRole('heading', { level: 1, name: 'Home' }),
     ).toBeInTheDocument()
+    expect(screen.getByTestId('home-header')).toBeInTheDocument()
     expect(
       screen.getByRole('button', { name: /componente shadcn/i }),
     ).toBeInTheDocument()
